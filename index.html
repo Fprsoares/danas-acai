@@ -108,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- 3. Escolha o Tamanho (Com atualização dinâmica de preço) -->
+            <!-- 3. Escolha o Tamanho -->
             <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
                 <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">3. Escolha
                     o Tamanho</h3>
@@ -123,10 +123,14 @@
                 </div>
             </div>
 
-            <!-- 4. Adicionais com Ícones -->
+            <!-- 4. Adicionais com Ícones (Com gatilho de clareza de vendas) -->
             <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
-                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-vibe-green pl-3">4.
-                    Adicionais Inclusos</h3>
+                <div class="flex justify-between items-center">
+                    <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-vibe-green pl-3">4.
+                        Adicionais Inclusos</h3>
+                    <span class="text-xs font-bold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">À vontade!
+                        ✨</span>
+                </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-acai-800">
                     <label
                         class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
@@ -138,12 +142,12 @@
                         class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
                         <input type="checkbox" name="toppings" value="Leite em Pó"
                             class="w-5 h-5 rounded text-acai-600">
-                        <span class="font-medium">🥣 Leite em Pó (Ninho)</span>
+                        <span class="font-medium">🥣 Leite em Pó </span>
                     </label>
                     <label
                         class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
                         <input type="checkbox" name="toppings" value="Granola" class="w-5 h-5 rounded text-acai-600">
-                        <span class="font-medium">🌾 Granola Crocante</span>
+                        <span class="font-medium">🌾 Granola </span>
                     </label>
                     <label
                         class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
@@ -165,8 +169,12 @@
 
             <!-- 5. Opções de Caldas -->
             <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
-                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">5. Escolha
-                    as Caldas 🍯</h3>
+                <div class="flex justify-between items-center">
+                    <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">5.
+                        Escolha as Caldas 🍯</h3>
+                    <span
+                        class="text-xs font-bold text-purple-700 bg-purple-100 px-2.5 py-1 rounded-full">Inclusas!</span>
+                </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-acai-800">
                     <label
                         class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
@@ -255,11 +263,11 @@
                     <p class="text-xs text-acai-600 mt-1">Ex: Dinheiro, pix, cartão</p>
                 </div>
 
-                <!-- Campo dinâmico para Troco -->
+                <!-- Campo dinâmico para Troco (Com teclado numérico otimizado) -->
                 <div id="changeContainer" class="hidden">
                     <label for="changeNeeded" class="block text-sm font-medium text-acai-700 mb-1">Troco para quanto?
                         (Opcional):</label>
-                    <input type="text" id="changeNeeded" placeholder="Ex: Troco para R$ 50,00"
+                    <input type="number" id="changeNeeded" placeholder="Ex: 50 (apenas o valor)"
                         class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
                 </div>
 
@@ -271,7 +279,7 @@
                 </div>
             </div>
 
-            <!-- Recurso Dinâmico Novo: Caixa de Resumo de Valor em Tempo Real -->
+            <!-- Caixa de Resumo de Valor em Tempo Real -->
             <div id="priceSummaryBox"
                 class="bg-acai-100 p-4 rounded-2xl border border-acai-200 flex justify-between items-center text-acai-900 font-display text-lg hidden">
                 <span>Total Estimado:</span>
@@ -279,7 +287,7 @@
             </div>
 
             <!-- Botão Enviar -->
-            <button type="submit"
+            <button type="submit" id="submitBtn"
                 class="w-full bg-vibe-green hover:bg-green-700 text-white font-display text-xl font-bold py-4 px-4 rounded-2xl shadow-xl transition duration-200 flex flex-col items-center justify-center">
                 <span>📲 Enviar Pedido no WhatsApp</span>
                 <span class="text-xs font-normal opacity-90 mt-0.5">(Aperte 'Enviar' na próxima tela)</span>
@@ -287,11 +295,28 @@
         </form>
     </main>
 
+    <!-- Modal / Pop-up de Sucesso Dinâmico -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl transform transition-all">
+            <div
+                class="w-16 h-16 bg-green-100 text-vibe-green rounded-full flex items-center justify-center mx-auto text-3xl">
+                ✅
+            </div>
+            <h3 class="font-display text-2xl font-bold text-acai-900">Pedido Pronto!</h3>
+            <p class="text-sm text-acai-700">Estamos abrindo o WhatsApp do D'Anas Açaí com o seu resumo. Basta tocar em
+                enviar!</p>
+            <button type="button" onclick="closeModal()"
+                class="w-full bg-acai-600 hover:bg-acai-800 text-white font-display font-semibold py-3 rounded-xl transition">
+                Entendido
+            </button>
+        </div>
+    </div>
+
     <footer class="text-center text-xs text-acai-700 py-8">
         <p>&copy; 2026 D'Anas Açaí. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Script de Processamento e Calculadora Dinâmica -->
+    <!-- Script de Processamento, Teclado Numérico e Pop-up -->
     <script>
         function toggleAddressField() {
             const neighborhood = document.getElementById('neighborhood').value;
@@ -319,7 +344,6 @@
             }
         }
 
-        // Função de cálculo em tempo real para o cliente ver o valor estimado
         function calculateTotal() {
             const sizeSelect = document.getElementById('acaiSize');
             const sizePrice = parseFloat(sizeSelect.options[sizeSelect.selectedIndex]?.getAttribute('data-price')) || 0;
@@ -339,8 +363,11 @@
             }
         }
 
-        // Evento de atualização dinâmica ao mudar o tamanho do copo
         document.getElementById('acaiSize').addEventListener('change', calculateTotal);
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
 
         document.getElementById('orderForm').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -353,7 +380,6 @@
 
             const name = sanitize(document.getElementById('clientName').value);
             const phone = sanitize(document.getElementById('clientPhone').value);
-
             const flavor = document.getElementById('acaiFlavor').value;
 
             const sizeSelect = document.getElementById('acaiSize');
@@ -366,7 +392,7 @@
             const address = sanitize(document.getElementById('clientAddress').value);
 
             const payment = document.getElementById('paymentMethod').value;
-            const changeNeeded = sanitize(document.getElementById('changeNeeded').value);
+            let changeNeeded = sanitize(document.getElementById('changeNeeded').value);
             const observations = sanitize(document.getElementById('observations').value);
 
             const selectedToppings = [];
@@ -411,6 +437,10 @@
             message += `💳 *Forma de Pagamento:* ${payment}\n`;
 
             if (payment === 'Dinheiro' && changeNeeded) {
+                // Formata bonitinho com R$ caso o usuário digite só o número
+                if (!changeNeeded.toLowerCase().includes('r$')) {
+                    changeNeeded = `R$ ${changeNeeded}`;
+                }
                 message += `💵 *Troco para:* ${changeNeeded}\n`;
             }
 
@@ -422,8 +452,14 @@
 
             message += `\n*Enviado via site oficial do D'Anas Açaí.*`;
 
+            // Exibe o pop-up de sucesso
+            document.getElementById('successModal').classList.remove('hidden');
+
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
+
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+            }, 1000);
         });
     </script>
 </body>
