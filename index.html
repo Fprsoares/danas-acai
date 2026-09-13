@@ -64,7 +64,7 @@
         </div>
     </header>
 
-    <!-- Formulário Único e Organizado -->
+    <!-- Formulário Principal -->
     <main id="orderSection"
         class="max-w-2xl mx-auto p-4 md:p-8 py-16 bg-vibe-sand rounded-t-[3rem] shadow-inner relative z-10">
         <div class="mb-10 text-center px-4">
@@ -107,7 +107,7 @@
                 </div>
             </div>
 
-            <!-- 3. Adicionais com Ícones (Versão Única) -->
+            <!-- 3. Adicionais com Ícones (Incluindo Amendoim) -->
             <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
                 <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-vibe-green pl-3">3.
                     Adicionais Inclusos</h3>
@@ -135,22 +135,77 @@
                         <span class="font-medium">🥜 Paçoca</span>
                     </label>
                     <label
-                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer col-span-full">
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="toppings" value="Amendoim" class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🌰 Amendoim</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
                         <input type="checkbox" name="toppings" value="Jujuba" class="w-5 h-5 rounded text-acai-600">
                         <span class="font-medium">🍬 Jujuba</span>
                     </label>
                 </div>
             </div>
 
-            <!-- 4. Entrega e Pagamento (Corrigido e sem duplicidade) -->
+            <!-- 4. Opções de Caldas -->
             <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
-                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">4. Entrega
+                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">4. Escolha
+                    as Caldas 🍯</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-acai-800">
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="syrups" value="Calda de Chocolate"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🍫 Calda de Chocolate</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="syrups" value="Calda de Morango"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🍓 Calda de Morango</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="syrups" value="Calda de Menta"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🌿 Calda de Menta</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="syrups" value="Calda de Caramelo"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🍮 Calda de Caramelo</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="syrups" value="Calda de Maracujá"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🍈 Calda de Maracujá</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="syrups" value="Calda Tutti-Frutti"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🍉 Calda Tutti-Frutti</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer col-span-full">
+                        <input type="checkbox" name="syrups" value="Calda de Leite Condensado"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🥛 Calda de Leite Condensado</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 5. Entrega, Endereço e Pagamento -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
+                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">5. Entrega
                     e Pagamento</h3>
 
                 <div>
                     <label for="neighborhood" class="block text-sm font-medium text-acai-700 mb-1">Selecione o Bairro /
                         Retirada:</label>
-                    <select id="neighborhood" required
+                    <select id="neighborhood" required onchange="toggleAddressField()"
                         class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="Retirar no Trailer (Orla)" data-fee="0">Retirar no Trailer (Orla) - Grátis
@@ -161,6 +216,14 @@
                         <option value="Guaratiba" data-fee="8">Guaratiba - Taxa: R$ 8,00</option>
                         <option value="Divinéia" data-fee="5">Divinéia - Taxa: R$ 5,00</option>
                     </select>
+                </div>
+
+                <!-- Campo dinâmico de Endereço (Aparece apenas se escolher entrega em bairro) -->
+                <div id="addressContainer" class="hidden">
+                    <label for="clientAddress" class="block text-sm font-medium text-acai-700 mb-1">Endereço de Entrega
+                        (Rua e Número):</label>
+                    <input type="text" id="clientAddress" placeholder="Ex: Rua das Flores, 123"
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
                 </div>
 
                 <div>
@@ -205,8 +268,23 @@
         <p>&copy; 2026 D'Anas Açaí. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Script de Processamento e Troco Dinâmico -->
+    <!-- Script de Processamento, Endereço e Troco Dinâmico -->
     <script>
+        function toggleAddressField() {
+            const neighborhood = document.getElementById('neighborhood').value;
+            const addressContainer = document.getElementById('addressContainer');
+            const addressInput = document.getElementById('clientAddress');
+
+            if (neighborhood !== 'Retirar no Trailer (Orla)' && neighborhood !== '') {
+                addressContainer.classList.remove('hidden');
+                addressInput.required = true;
+            } else {
+                addressContainer.classList.add('hidden');
+                addressInput.required = false;
+                addressInput.value = '';
+            }
+        }
+
         function toggleChangeField() {
             const payment = document.getElementById('paymentMethod').value;
             const changeContainer = document.getElementById('changeContainer');
@@ -237,6 +315,7 @@
             const neighborhoodSelect = document.getElementById('neighborhood');
             const neighborhoodText = neighborhoodSelect.value;
             const deliveryFee = parseFloat(neighborhoodSelect.options[neighborhoodSelect.selectedIndex].getAttribute('data-fee')) || 0;
+            const address = sanitize(document.getElementById('clientAddress').value);
 
             const payment = document.getElementById('paymentMethod').value;
             const changeNeeded = sanitize(document.getElementById('changeNeeded').value);
@@ -247,8 +326,18 @@
                 selectedToppings.push(checkbox.value);
             });
 
+            const selectedSyrups = [];
+            document.querySelectorAll('input[name="syrups"]:checked').forEach((checkbox) => {
+                selectedSyrups.push(checkbox.value);
+            });
+
             if (!name || !phone || !sizeText || !neighborhoodText || !payment) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            if (deliveryFee > 0 && !address) {
+                alert('Por favor, informe a rua e o número para a entrega.');
                 return;
             }
 
@@ -259,10 +348,14 @@
             message += `👤 *Cliente:* ${name}\n`;
             message += `📞 *WhatsApp:* ${phone}\n`;
             message += `🥣 *Tamanho:* ${sizeText}\n`;
-            message += `✨ *Adicionais:* ${selectedToppings.length > 0 ? selectedToppings.join(', ') : 'Nenhum'}\n`;
-            message += `📍 *Entrega/Local:* ${neighborhoodText}\n`;
 
-            if (deliveryFee > 0) {
+            message += `✨ *Adicionais:* ${selectedToppings.length > 0 ? selectedToppings.join(', ') : 'Nenhum'}\n`;
+            message += `🍯 *Caldas:* ${selectedSyrups.length > 0 ? selectedSyrups.join(', ') : 'Nenhuma'}\n`;
+
+            message += `📍 *Local/Bairro:* ${neighborhoodText}\n`;
+
+            if (deliveryFee > 0 && address) {
+                message += `🏠 *Endereço:* ${address}\n`;
                 message += `💵 *Taxa de Entrega:* R$ ${deliveryFee.toFixed(2)}\n`;
             }
 
