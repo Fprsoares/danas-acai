@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>D'Anas Açaí - O Sabor da Praia no Seu WhatsApp!</title>
+    <title>D'Anas Açaí - O Melhor Açaí de Maricá</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,12 +108,12 @@
                 </div>
             </div>
 
-            <!-- 3. Escolha o Tamanho -->
+            <!-- 3. Escolha o Tamanho (Com atualização dinâmica de preço) -->
             <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
                 <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">3. Escolha
                     o Tamanho</h3>
                 <div>
-                    <select id="acaiSize" required
+                    <select id="acaiSize" required onchange="calculateTotal()"
                         class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
                         <option value="" disabled selected>Selecione o tamanho do copo</option>
                         <option value="Copo 300ml - R$ 12,00" data-price="12">Copo 300ml - R$ 12,00</option>
@@ -221,7 +221,7 @@
                 <div>
                     <label for="neighborhood" class="block text-sm font-medium text-acai-700 mb-1">Seu Bairro /
                         Retirada:</label>
-                    <select id="neighborhood" required onchange="toggleAddressField()"
+                    <select id="neighborhood" required onchange="toggleAddressField(); calculateTotal();"
                         class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="Retirar no Trailer (Orla)" data-fee="0">Retirar no Trailer (Orla) - Grátis
@@ -271,6 +271,13 @@
                 </div>
             </div>
 
+            <!-- Recurso Dinâmico Novo: Caixa de Resumo de Valor em Tempo Real -->
+            <div id="priceSummaryBox"
+                class="bg-acai-100 p-4 rounded-2xl border border-acai-200 flex justify-between items-center text-acai-900 font-display text-lg hidden">
+                <span>Total Estimado:</span>
+                <span id="totalDisplay" class="font-extrabold text-acai-800 text-xl">R$ 0,00</span>
+            </div>
+
             <!-- Botão Enviar -->
             <button type="submit"
                 class="w-full bg-vibe-green hover:bg-green-700 text-white font-display text-xl font-bold py-4 px-4 rounded-2xl shadow-xl transition duration-200 flex flex-col items-center justify-center">
@@ -284,7 +291,7 @@
         <p>&copy; 2026 D'Anas Açaí. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Script de Processamento, Sabores e Taxas -->
+    <!-- Script de Processamento e Calculadora Dinâmica -->
     <script>
         function toggleAddressField() {
             const neighborhood = document.getElementById('neighborhood').value;
@@ -311,6 +318,29 @@
                 document.getElementById('changeNeeded').value = '';
             }
         }
+
+        // Função de cálculo em tempo real para o cliente ver o valor estimado
+        function calculateTotal() {
+            const sizeSelect = document.getElementById('acaiSize');
+            const sizePrice = parseFloat(sizeSelect.options[sizeSelect.selectedIndex]?.getAttribute('data-price')) || 0;
+
+            const neighborhoodSelect = document.getElementById('neighborhood');
+            const deliveryFee = parseFloat(neighborhoodSelect.options[neighborhoodSelect.selectedIndex]?.getAttribute('data-fee')) || 0;
+
+            const summaryBox = document.getElementById('priceSummaryBox');
+            const totalDisplay = document.getElementById('totalDisplay');
+
+            if (sizePrice > 0) {
+                const total = sizePrice + deliveryFee;
+                totalDisplay.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+                summaryBox.classList.remove('hidden');
+            } else {
+                summaryBox.classList.add('hidden');
+            }
+        }
+
+        // Evento de atualização dinâmica ao mudar o tamanho do copo
+        document.getElementById('acaiSize').addEventListener('change', calculateTotal);
 
         document.getElementById('orderForm').addEventListener('submit', function (event) {
             event.preventDefault();
