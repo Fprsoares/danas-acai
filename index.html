@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>D'Anas Açaí - O Sabor da Praia no Seu WhatsApp!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        acai: { 50: '#F3E8FF', 100: '#E9D5FF', 400: '#A855F7', 600: '#7E22CE', 800: '#581C87', 900: '#4C1D95' },
+                        vibe: { green: '#16A34A', sand: '#F5EADD' }
+                    },
+                    fontFamily: { display: ['Fredoka', 'cursive'], body: ['Inter', 'sans-serif'] },
+                    boxShadow: { 'soft-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #F5EADD;
+        }
+
+        input,
+        select,
+        textarea {
+            font-size: 16px !important;
+        }
+    </style>
+</head>
+
+<body class="font-body text-acai-900 leading-normal">
+
+    <!-- Cabeçalho & Trailer -->
+    <header
+        class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-8 pb-16 bg-acai-50">
+        <div class="relative z-10 mb-6 max-w-lg mx-auto">
+            <h1 class="font-display text-4xl md:text-5xl font-extrabold text-acai-900 tracking-wide">🌴 D'Anas Açaí 🌴
+            </h1>
+            <p class="text-base md:text-lg text-acai-700 mt-2">O verdadeiro sabor do açaí na orla direto no seu
+                WhatsApp!</p>
+        </div>
+        <div
+            class="relative z-10 w-full max-w-lg mx-auto mb-8 shadow-soft-xl rounded-3xl overflow-hidden border-4 border-white bg-white">
+            <img src="trailer.jpg" alt="Trailer D'Anas Açaí" class="w-full h-auto object-cover">
+        </div>
+        <div class="relative z-20">
+            <a href="#orderSection"
+                class="inline-block bg-vibe-green hover:bg-green-700 text-white font-display text-xl md:text-2xl font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all">
+                👇 Fazer Pedido Agora! 👇
+            </a>
+        </div>
+    </header>
+
+    <!-- Formulário -->
+    <main id="orderSection"
+        class="max-w-2xl mx-auto p-4 md:p-8 py-16 bg-vibe-sand rounded-t-[3rem] shadow-inner relative z-10">
+        <div class="mb-10 text-center px-4">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-acai-800">Monte seu Copo 🥣</h2>
+            <p class="text-sm md:text-base text-acai-700 mt-2">Preencha os campos abaixo para gerar o seu pedido oficial
+                no WhatsApp!</p>
+        </div>
+
+        <form id="orderForm" class="space-y-6">
+
+            <!-- Dados e Contato -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
+                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">1. Seus
+                    Dados de Contato</h3>
+                <div>
+                    <label for="clientName" class="block text-sm font-medium text-acai-700 mb-1">Seu Nome:</label>
+                    <input type="text" id="clientName" required placeholder="Ex: Maria Silva"
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
+                </div>
+                <div>
+                    <label for="clientPhone" class="block text-sm font-medium text-acai-700 mb-1">Seu WhatsApp (com
+                        DDD):</label>
+                    <input type="tel" id="clientPhone" required placeholder="Ex: 21 99999-9999"
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
+                </div>
+            </div>
+
+            <!-- Tamanho -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
+                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">2. Escolha
+                    o Tamanho</h3>
+                <div>
+                    <select id="acaiSize" required
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
+                        <option value="" disabled selected>Selecione o tamanho do copo</option>
+                        <option value="Copo 300ml - R$ 12,00" data-price="12">Copo 300ml - R$ 12,00</option>
+                        <option value="Copo 500ml - R$ 18,00" data-price="18">Copo 500ml - R$ 18,00</option>
+                        <option value="Copo 700ml - R$ 25,00" data-price="25">Copo 700ml - R$ 25,00</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Adicionais -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
+                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-vibe-green pl-3">3.
+                    Adicionais Inclusos</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-acai-800">
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="toppings" value="Leite Condensado"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">Leite Condensado</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="toppings" value="Leite em Pó"
+                            class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">Leite em Pó (Ninho)</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="toppings" value="Granola" class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">Granola Crocante</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer">
+                        <input type="checkbox" name="toppings" value="Paçoca" class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">Paçoca</span>
+                    </label>
+                    <label
+                        class="flex items-center space-x-3 p-3 rounded-xl bg-acai-50 border border-acai-100 cursor-pointer col-span-full">
+                        <input type="checkbox" name="toppings" value="Jujuba" class="w-5 h-5 rounded text-acai-600">
+                        <span class="font-medium">🍬 Jujuba</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Bairros e Pagamento -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-acai-100 space-y-4">
+                <h3 class="font-display text-xl text-acai-800 font-semibold border-l-4 border-acai-400 pl-3">4. Entrega
+                    e Pagamento</h3>
+
+                <div>
+                    <label for="neighborhood" class="block text-sm font-medium text-acai-700 mb-1">Selecione o Bairro /
+                        Retirada:</label>
+                    <select id="neighborhood" required
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="Retirar no Trailer (Orla)" data-fee="0">Retirar no Trailer (Orla) - Grátis
+                        </option>
+                        <option value="Barra de Maricá" data-fee="5">Barra de Maricá - Taxa: R$ 5,00</option>
+                        <option value="Araçatiba" data-fee="6">Araçatiba - Taxa: R$ 6,00</option>
+                        <option value="Zacarias" data-fee="7">Zacarias - Taxa: R$ 7,00</option>
+                        <option value="Guaratiba" data-fee="8">Guaratiba - Taxa: R$ 8,00</option>
+                        <option value="Divinéia" data-fee="5">Divinéia - Taxa: R$ 5,00</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="paymentMethod" class="block text-sm font-medium text-acai-700 mb-1">Forma de
+                        Pagamento:</label>
+                    <select id="paymentMethod" required
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400">
+                        <option value="" disabled selected>Como vai pagar?</option>
+                        <option value="PIX">PIX</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão (Débito/Crédito)">Cartão (Débito/Crédito)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="observations" class="block text-sm font-medium text-acai-700 mb-1">Observações
+                        (Opcional):</label>
+                    <textarea id="observations" rows="2" placeholder="Ex: Ponto de referência, troco para R$ 50..."
+                        class="w-full px-4 py-3 rounded-xl bg-acai-50 border border-acai-200 text-acai-950 focus:outline-none focus:ring-2 focus:ring-acai-400"></textarea>
+                </div>
+            </div>
+
+            <!-- Botão Enviar -->
+            <button type="submit"
+                class="w-full bg-vibe-green hover:bg-green-700 text-white font-display text-xl font-bold py-4 px-4 rounded-2xl shadow-xl transition duration-200 flex flex-col items-center justify-center">
+                <span>📲 Enviar Pedido no WhatsApp</span>
+                <span class="text-xs font-normal opacity-90 mt-0.5">(Aperte 'Enviar' no WhatsApp na próxima tela)</span>
+            </button>
+        </form>
+    </main>
+
+    <footer class="text-center text-xs text-acai-700 py-8">
+        <p>&copy; 2026 D'Anas Açaí. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script de Processamento e Segurança -->
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const sanitize = (str) => {
+                const temp = document.createElement('div');
+                temp.textContent = str;
+                return temp.innerHTML.trim();
+            };
+
+            const name = sanitize(document.getElementById('clientName').value);
+            const phone = sanitize(document.getElementById('clientPhone').value);
+
+            const sizeSelect = document.getElementById('acaiSize');
+            const sizeText = sizeSelect.value;
+            const sizePrice = parseFloat(sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-price')) || 0;
+
+            const neighborhoodSelect = document.getElementById('neighborhood');
+            const neighborhoodText = neighborhoodSelect.value;
+            const deliveryFee = parseFloat(neighborhoodSelect.options[neighborhoodSelect.selectedIndex].getAttribute('data-fee')) || 0;
+
+            const payment = document.getElementById('paymentMethod').value;
+            const observations = sanitize(document.getElementById('observations').value);
+
+            const selectedToppings = [];
+            document.querySelectorAll('input[name="toppings"]:checked').forEach((checkbox) => {
+                selectedToppings.push(checkbox.value);
+            });
+
+            if (!name || !phone || !sizeText || !neighborhoodText || !payment) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            const total = sizePrice + deliveryFee;
+            const phoneNumber = "5521972062906";
+
+            let message = `*Novo Pedido - D'Anas Açaí* 🌴\n\n`;
+            message += `👤 *Cliente:* ${name}\n`;
+            message += `📞 *WhatsApp:* ${phone}\n`;
+            message += `🥣 *Tamanho:* ${sizeText}\n`;
+            message += `✨ *Adicionais:* ${selectedToppings.length > 0 ? selectedToppings.join(', ') : 'Nenhum'}\n`;
+            message += `📍 *Entrega/Local:* ${neighborhoodText}\n`;
+
+            if (deliveryFee > 0) {
+                message += `💵 *Taxa de Entrega:* R$ ${deliveryFee.toFixed(2)}\n`;
+            }
+
+            message += `💳 *Forma de Pagamento:* ${payment}\n`;
+            message += `💰 *Valor Total:* R$ ${total.toFixed(2)}\n`;
+
+            if (observations) {
+                message += `📝 *Obs:* ${observations}\n`;
+            }
+
+            message += `\n*Enviado via site oficial do D'Anas Açaí.*`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+</body>
+
+</html>
